@@ -1,0 +1,55 @@
+{
+  "name": "react-google-calendar-events-list",
+  "description": "Reusable ReactJS component for rendering a list of events from a google calendar.",
+  "main": "index.js",
+  "version": "0.2.0",
+  "dependencies": {
+    "react": "~0.8"
+  },
+  "devDependencies": {
+    "browserify": "~2.36.0",
+    "envify": "~0.2.0",
+    "reactify": "~0.4.0",
+    "statics": "~0.1.0",
+    "superagent": "^0.18.0",
+    "uglifyjs": "~2.3.6",
+    "watchify": "~0.4.1"
+  },
+  "scripts": {
+    "start": "STATIC_ROOT=./static watchify -o browser-bundle.js -v -d .",
+    "build": "STATIC_ROOT=./static NODE_ENV=production browserify . | uglifyjs -cm > browser-bundle.min.js",
+    "collect-static": "collect-static . ./static",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": {
+    "name": "Vince Speelman"
+  },
+  "license": "MIT",
+  "browserify": {
+    "transform": [
+      "reactify",
+      "envify"
+    ]
+  },
+  "gitHead": "a870cf2def9bd7147b835715275d34617cab5c09",
+  "_id": "react-google-calendar-events-list@0.2.0",
+  "_shasum": "152f1d415154b70eb4f50c104053d0f168c737a6",
+  "_from": "react-google-calendar-events-list@latest",
+  "_npmVersion": "1.4.15",
+  "_npmUser": {
+    "name": "vinspee",
+    "email": "v@vinspee.me"
+  },
+  "maintainers": [
+    {
+      "name": "vinspee",
+      "email": "v@vinspee.me"
+    }
+  ],
+  "dist": {
+    "shasum": "152f1d415154b70eb4f50c104053d0f168c737a6",
+    "tarball": "https://registry.npmjs.org/react-google-calendar-events-list/-/react-google-calendar-events-list-0.2.0.tgz"
+  },
+  "directories": {},
+  "_resolved": "https://registry.npmjs.org/react-google-calendar-events-list/-/react-google-calendar-events-list-0.2.0.tgz"
+}
