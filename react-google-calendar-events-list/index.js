@@ -1,5 +1,14 @@
-window.React    = require("react");
 var request  = require("superagent");
+var React = require('react');
+var ReactDOM = require('react-dom');
+
+var dom = ['div', 'dt', 'span', 'dd', 'time']
+.reduce(function(acc, key) {
+  acc[key] = function() {
+    React.createElement.apply(null, [key].concat(arguments));
+  }
+}, {});
+
 
 var CalEvent = React.createClass({
 
@@ -37,15 +46,15 @@ var CalEvent = React.createClass({
     eventDate = this._formatDate(eventDateTime[0]);
 
     return(
-      React.DOM.div( {className:"event"},
-        React.DOM.dt( {className:"event__title"}, event.summary),
-        React.DOM.span( {className:"event__location"},
-          React.DOM.span(null, event.location)
+      dom.div( {className:"event"},
+        dom.dt( {className:"event__title"}, event.summary),
+        dom.span( {className:"event__location"},
+          dom.span(null, event.location)
         ),
-        React.DOM.dd( {className:"event__details"},
-          React.DOM.time( {className:"event__schedule", dateTime:event.start.dateTime},
-            React.DOM.span( {className:"event__date"}, eventDate),
-            React.DOM.span( {className:"event__time"}, eventTime)
+        dom.dd( {className:"event__details"},
+          dom.time( {className:"event__schedule", dateTime:event.start.dateTime},
+            dom.span( {className:"event__date"}, eventDate),
+            dom.span( {className:"event__time"}, eventTime)
           )
         )
       )
@@ -78,14 +87,14 @@ var CalEvents = React.createClass({displayName: 'CalEvents',
   render: function() {
 
     return(
-      React.DOM.div( {className:"events"},
-        React.DOM.dl( {className:"events__list"},
+      dom.div( {className:"events"},
+        dom.dl( {className:"events__list"},
         this.state.events.map(function (event) {
           var today = new Date;
           today = today.toISOString();
           if(event.start.dateTime >  today) {
             return(
-              CalEvent( {className:"events__item", key:event.id, event:event})
+              React.createElement( CalEvent, {className:"events__item", key:event.id, event:event})
             );
           }
         })

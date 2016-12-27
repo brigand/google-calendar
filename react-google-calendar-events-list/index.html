@@ -8,8 +8,8 @@
       <h1>You probably want to do something like this:</h1>
       <code>
         <pre>
-          React.renderComponent(
-            CalEvents({
+          ReactDOM.render(
+            React.createElement( CalEvents(, {
               calendarID: "qaid.atlanta@mkausa.org",
               apiKey: "Get a free api key from https://console.developers.google.com/project"
             }),
