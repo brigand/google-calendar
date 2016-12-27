@@ -6,7 +6,8 @@ var dom = ['div', 'dt', 'span', 'dd', 'time']
 .reduce(function(acc, key) {
   acc[key] = function() {
     React.createElement.apply(null, [key].concat(arguments));
-  }
+  };
+  return acc;
 }, {});
 
 
